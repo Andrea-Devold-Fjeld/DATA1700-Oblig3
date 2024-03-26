@@ -18,6 +18,7 @@ input validation failed
 <!-- I tried to use the form tag but then the table didn't work, I think my solution works well
 enough now. But next time i will build the app with the form tag n mind. -->
 Velg film:
+<form id="billettForm">
 <select id="velgFilm" name="film">
     <option value='' selected="selected">Velg film her</option>
     <option value="Barbie Movie">Barbie Movie</option>
@@ -50,6 +51,7 @@ To input the persnoalia i used a table so that the everything aligns properly.
         <td>Epost</td><td><input type="email" id="epost"></td><td><div id="epostError"></div> </td>
     </tr>
 </table>
+</form>
 <!-- The button that calls the function, I tried to use the sybmit button but i struggled,
 so maby i can use that naxt time but this works good enough -->
 <button id="kjopBilett">Kjøp billett</button>
