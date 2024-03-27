@@ -34,10 +34,37 @@ $(document).ready(function () {
         }
 
         $.post("/lagre", billett, function (){
-            console.log("Den skulle blitt lagret")
+            $.get("/hentAlle", function (billetter) {
+                formaterBilletter(billetter);
+            })
         })
     })
 
+    function formaterBilletter(billetter){
+        if(billetter.length===0){
+            $("#alleBilletter").html("");
+            return;
+        }
+        let ut = "<table><tr>" +
+            "<th>Film</th>" +
+            "<th>Antall</th>" +
+            "<th>Fornavn</th>" +
+            "<th>Etternavn</th>" +
+            "<th>Telefonnr</th>" +
+            "<th>Epost</th></tr>";
+        for (const billett of billetter){
+            ut += "<tr>" +
+                "<td>"+billett.film+"</td>" +
+                "<td>"+billett.antall+"</td>" +
+                "<td>"+billett.fornavn+"</td>" +
+                "<td>"+billett.etternavn+"</td>" +
+                "<td>"+billett.telefonnr+"</td>" +
+                "<td>"+billett.email+"</td></tr>";
+        }
+        ut += "</table>"
+        $("#alleBilletter").html(ut);
+
+    }
 //function to validate a film has been selected
     function validateFilm(target) {
         if(target === ''){

@@ -2,10 +2,16 @@ package com.example.data1700oblig3;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
-@Component
+import java.util.List;
+
+@Repository
 public class BillettRepository {
     @Autowired
     private JdbcTemplate db;
@@ -19,5 +25,10 @@ public class BillettRepository {
             //have to make the logger work
             return false;
         }
+    }
+
+    public List<Billett> hentBilletter() {
+        String sql = "select * from billetter.Billett order by etternavn";
+        return db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
     }
 }
