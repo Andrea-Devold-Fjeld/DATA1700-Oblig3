@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $('form button').on("click",function(e){
+        e.preventDefault();
+    });
     $("#kjopBillett").click(function () {
         const billett = {
             film : $("#velgFilm").val(),
@@ -34,17 +37,25 @@ $(document).ready(function () {
         }
 
         $.post("/lagre", billett, function (){
-            $.get("/hentAlle", function (billetter) {
-                formaterBilletter(billetter);
-            })
-        })
-    })
+            console.log("Data lagret")
+            hentAlle();
+        });
+    });
 
+    function hentAlle(){
+        $.get("/hentAlle", function (billetter) {
+            console.log("Hentet data")
+            formaterBilletter(billetter);
+        });
+    }
     function formaterBilletter(billetter){
+        /*
         if(billetter.length===0){
             $("#alleBilletter").html("");
             return;
         }
+
+         */
         let ut = "<table><tr>" +
             "<th>Film</th>" +
             "<th>Antall</th>" +
@@ -71,6 +82,7 @@ $(document).ready(function () {
             $("#filmError").html('Må velge en film!').css('color', 'red');
             return true;
         }
+        return false;
     }
 //function to validate that antall is a positive number
     function validateAntall(target){
@@ -79,6 +91,7 @@ $(document).ready(function () {
             $("#antallError").html("Antall må være ett positivt nummer!").css('color','red');
             return true;
         }
+        return false;
     }
 //function to validate fornavn
     function validateFornavn(target){
@@ -86,6 +99,7 @@ $(document).ready(function () {
             $("#fornavnError").html("Må skrive noe inn i fornavn").css('color', 'red');
             return true;
         }
+        return false;
     }
 //function to validate etternavn
     function validateEtternavn(target){
@@ -93,6 +107,7 @@ $(document).ready(function () {
             $("#etternavnError").html("Må skrive noe inn i etternavn").css('color', 'red');
             return true;
         }
+        return false;
     }
 //function to validate telefonnr
     function validateTelefonnr(target){
@@ -103,6 +118,7 @@ $(document).ready(function () {
             $("#telfonnrError").html("Må skrive ett gyldig telefonnr, 8 tall").css('color', 'red');
             return true;
         }
+        return false;
     }
 //function to validate epost
     function validateEpost(target) {
@@ -119,5 +135,6 @@ $(document).ready(function () {
             $("#epostError").html("Må skrive en gyldig epost-addresse: a@a.com").css('color', 'red');
             return true;
         }
+        return false;
     }
 })
