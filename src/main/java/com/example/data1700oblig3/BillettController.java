@@ -24,4 +24,10 @@ public class BillettController {
     public List<Billett> hentAlleBilletter(){
         return rep.hentBilletter();
     }
+    @GetMapping("/slettAlle")
+    public void slettAlle(HttpServletResponse response) throws IOException{
+        if(!rep.slettAlle()){
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i db -prøv igjen senere");
+        }
+    }
 }

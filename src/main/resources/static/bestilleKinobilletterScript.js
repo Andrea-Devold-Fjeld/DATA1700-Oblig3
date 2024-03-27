@@ -42,6 +42,11 @@ $(document).ready(function () {
         });
     });
 
+    $("#slettAlle").click(function (){
+        $.get("/slettAlle", function (){
+            $("#alleBilletter").html("");
+        })
+    })
     function hentAlle(){
         $.get("/hentAlle", function (billetter) {
             console.log("Hentet data")
@@ -49,13 +54,6 @@ $(document).ready(function () {
         });
     }
     function formaterBilletter(billetter){
-        /*
-        if(billetter.length===0){
-            $("#alleBilletter").html("");
-            return;
-        }
-
-         */
         let ut = "<table><tr>" +
             "<th>Film</th>" +
             "<th>Antall</th>" +

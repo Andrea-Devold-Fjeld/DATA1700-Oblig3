@@ -31,4 +31,15 @@ public class BillettRepository {
         String sql = "select * from billetter.Billett order by etternavn";
         return db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
     }
+
+    public boolean slettAlle(){
+        String sql = "delete from billetter.Billett";
+        try{
+            db.update(sql);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
 }
