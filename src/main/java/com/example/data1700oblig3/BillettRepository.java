@@ -11,7 +11,7 @@ public class BillettRepository {
     private JdbcTemplate db;
 
     public boolean lagreBillett(Billett billett){
-        String sql = "insert into Billett (film,antall,fornavn,etternavn,telefonnr,email) values(?,?,?,?,?,?)";
+        String sql = "insert into billetter.Billett (film,antall,fornavn,etternavn,telefonnr,email) values(?,?,?,?,?,?)";
         try {
             db.update(sql, billett.getFilm(),billett.getAntall(), billett.getFornavn(),billett.getEtternavn(),billett.getTelefonnr(),billett.getEmail());
             return true;

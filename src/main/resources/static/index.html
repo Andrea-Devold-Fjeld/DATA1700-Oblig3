@@ -29,7 +29,7 @@ Velg film:
 <table>
     <tr>
         <!-- For antall I choose to use maxlength="2" so that max number of tickets is 99 -->
-        <td>Antall: <input type="text" id="antall" maxlength="2"></td>
+        <td>Antall: <input type="text" id="antall" maxlength="2" name="antall"></td>
         <td><div id="antallError"></div></td>
     </tr>
 </table>
@@ -39,22 +39,23 @@ To input the persnoalia i used a table so that the everything aligns properly.
 -->
 <table>
     <tr>
-        <td>Fornavn</td><td><input type="text" id="fornavn"></td><td><div id="fornavnError"></div> </td>
+        <td>Fornavn</td><td><input type="text" id="fornavn" name="fornavn"></td><td><div id="fornavnError"></div> </td>
     </tr>
     <tr>
-        <td>Etternavn</td><td><input type="text" id="etternavn"></td><td><div id="etternavnError"></div></td>
+        <td>Etternavn</td><td><input type="text" id="etternavn" name="etternavn"></td><td><div id="etternavnError"></div></td>
     </tr>
     <tr>
-        <td>Telefonnr</td><td><input type="tel" id="telefonnr" ></td><td><div id="telfonnrError"></div></td>
+        <td>Telefonnr</td><td><input type="tel" id="telefonnr" name="telefonnr"></td><td><div id="telfonnrError"></div></td>
     </tr>
     <tr>
-        <td>Epost</td><td><input type="email" id="epost"></td><td><div id="epostError"></div> </td>
+        <td>Epost</td><td><input type="email" id="epost" name="email"></td><td><div id="epostError"></div> </td>
     </tr>
 </table>
-</form>
 <!-- The button that calls the function, I tried to use the sybmit button but i struggled,
 so maby i can use that naxt time but this works good enough -->
-<button id="kjopBilett">Kjøp billett</button>
+<!---<button id="kjopBilett">Kjøp billett</button> -->
+    <button id="kjopBillett" >Kjøp billett</button>
+</form>
 <br/><br />
 <!-- Here is the table that shows all the tickets, I use JQUERY to hide the table head if the
 ticket array is empty. I use JQuery to append rows to the tbody when tickets are purchased -->
