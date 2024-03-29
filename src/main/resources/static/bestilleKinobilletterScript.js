@@ -54,6 +54,7 @@ $(document).ready(function () {
         });
     }
     function formaterBilletter(billetter){
+        let counter = 0;
         let ut = "<table><tr>" +
             "<th>Film</th>" +
             "<th>Antall</th>" +
@@ -62,17 +63,25 @@ $(document).ready(function () {
             "<th>Telefonnr</th>" +
             "<th>Epost</th></tr>";
         for (const billett of billetter){
+            counter++;
             ut += "<tr>" +
-                "<td>"+billett.film+"</td>" +
+                "<td>"+billett.film+"<</td>" +
                 "<td>"+billett.antall+"</td>" +
                 "<td>"+billett.fornavn+"</td>" +
                 "<td>"+billett.etternavn+"</td>" +
                 "<td>"+billett.telefonnr+"</td>" +
-                "<td>"+billett.email+"</td></tr>";
+                "<td>"+billett.email+"</td>" +
+                "<td><button id='endreBillett'>endre</button></td><td>button id='slettBillett'></tdbutton></td></tr><";
         }
         ut += "</table>"
         $("#alleBilletter").html(ut);
 
+    }
+    $("#endreBillett").click( function (){
+
+    })
+
+    function slettEn(){
     }
 //function to validate a film has been selected
     function validateFilm(target) {

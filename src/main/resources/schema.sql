@@ -1,6 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS billetter;
-set SCHEMA billetter;
-
 CREATE TABLE Billett
 (
     id INTEGER AUTO_INCREMENT NOT NULL,
