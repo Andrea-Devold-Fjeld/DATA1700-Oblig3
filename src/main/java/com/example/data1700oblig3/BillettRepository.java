@@ -30,9 +30,8 @@ public class BillettRepository {
 
     public void endreBillett(Billett b) throws IOException {
         String sql = "update Billet set film=?, antall=?, fornavn=?, etternavn=?, telefonnr=?, email=? where is=?";
-        db.update(sql, b.getFilm(), b.getAntall(), b.getFornavn(), b.getEtternavn(), b.getTelefonnr(), b.getEmail());
         try{
-            db.update(sql, b.getid());
+            db.update(sql, b.getFilm(), b.getAntall(), b.getFornavn(), b.getEtternavn(), b.getTelefonnr(), b.getEmail());
         }catch (Exception e){
             //logger
         }

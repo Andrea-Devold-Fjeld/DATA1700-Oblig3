@@ -37,7 +37,6 @@ $(document).ready(function () {
         }
 
         $.post("/lagre", billett, function (){
-            console.log("Data lagret")
             hentAlle();
         });
     });
@@ -55,29 +54,36 @@ $(document).ready(function () {
     }
     function formaterBilletter(billetter){
         let counter = 0;
-        let ut = "<table><tr>" +
-            "<th>Film</th>" +
-            "<th>Antall</th>" +
-            "<th>Fornavn</th>" +
-            "<th>Etternavn</th>" +
-            "<th>Telefonnr</th>" +
-            "<th>Epost</th></tr>";
+        let ut = "<table class='table table-striped' id='billetterTable'><tr>" +
+            "<th scope='col'>Film</th>" +
+            "<th scope='col'>Antall</th>" +
+            "<th scope='col'>Fornavn</th>" +
+            "<th scope='col'>Etternavn</th>" +
+            "<th scope='col'>Telefonnr</th>" +
+            "<th scope='col'>Epost</th>" +
+            "<th scope='col'></th></tr>";
         for (const billett of billetter){
             counter++;
             ut += "<tr>" +
-                "<td>"+billett.film+"<</td>" +
+                "<td>"+billett.film+"</td>" +
                 "<td>"+billett.antall+"</td>" +
                 "<td>"+billett.fornavn+"</td>" +
                 "<td>"+billett.etternavn+"</td>" +
                 "<td>"+billett.telefonnr+"</td>" +
                 "<td>"+billett.email+"</td>" +
-                "<td><button id='endreBillett'>endre</button></td><td>button id='slettBillett'></tdbutton></td></tr><";
+                "<td><button class='endreBillett' class='btn btn-primary btn-xs'>Endre</button>" +
+                "<button class='slettBillett' class='btn btn-danger btn-xs'>Slett</button></td></tr><";
         }
         ut += "</table>"
         $("#alleBilletter").html(ut);
 
     }
-    $("#endreBillett").click( function (){
+
+    $("#billetterTable").on('click', '.endreBillett', function(){
+        let row = $(this).closest("tr");
+        let data = row.find("td");
+        console.log(data.toString());
+        const Array = ['film', 'antall', 'fornavn','etternavn','telefonnr','email' ]
 
     })
 
@@ -120,8 +126,7 @@ $(document).ready(function () {
     function validateTelefonnr(target){
         //uses regexp to validate: 8 numbers beetween 0 and 9
         let regex = new RegExp(/^[0-9]{8}$/);
-        let antall = target;
-        if(!antall.match(regex)){
+        if(!target.match(regex)){
             $("#telfonnrError").html("Må skrive ett gyldig telefonnr, 8 tall").css('color', 'red');
             return true;
         }
@@ -137,8 +142,7 @@ $(document).ready(function () {
         //then +[\w-]{2,4} after the dot it has to match 2-4 word character wich is the country code.
          */
         let regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-        let epost = target;
-        if (!epost.match(regex)) {
+        if (!target.match(regex)) {
             $("#epostError").html("Må skrive en gyldig epost-addresse: a@a.com").css('color', 'red');
             return true;
         }

@@ -9,6 +9,7 @@
 
 </head>
 <body>
+<div class="container-fluid">
 <h1>Bestilling av kinobiletter</h1>
 <br /><br />
 <!--
@@ -54,15 +55,19 @@ To input the persnoalia i used a table so that the everything aligns properly.
 <!-- The button that calls the function, I tried to use the sybmit button but i struggled,
 so maby i can use that naxt time but this works good enough -->
 <!---<button id="kjopBilett">Kjøp billett</button> -->
-    <button id="kjopBillett" >Kjøp billett</button>
+    <button id="kjopBillett" class="btn btn-primary">Kjøp billett</button>
+    <div id="server-error"></div>
 </form>
+</div>
 <br/><br />
 <!-- Here is the table that shows all the tickets, I use JQUERY to hide the table head if the
 ticket array is empty. I use JQuery to append rows to the tbody when tickets are purchased -->
+<div class="container-fluid">
 <h3>Alle biletter</h3>
-<div id="alleBilletter"></div>
+<div id="alleBilletter" class="table-responsive"></div>
 <br/><br/>
 <!-- The button that calls the function that empty the array and empty the table. -->
-<button id="slettAlle">Slett alle biletter</button>
+<button id="slettAlle" class="btn btn-danger">Slett alle biletter</button>
+</div>
 </body>
 </html>
