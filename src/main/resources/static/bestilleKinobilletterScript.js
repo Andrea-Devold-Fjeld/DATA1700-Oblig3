@@ -41,11 +41,21 @@ $(document).ready(function () {
             $("#alleBilletter").show();
             hentAlle();
         });
+        /*
+        $("#velgFilm").prop('selectedIndex', 0);
+        $("#antall").val("");
+        $("#fornavn").val("");
+        $("#etternavn").val("");
+        $("#telefonnr").val("");
+        $("#epost").val("");
+
+         */
     });
 
     $("#slettAlle").click(function (){
         $.get("/slettAlle", function (){
-            $("#alleBilletter").html("");
+            console.log("SlettAlle");
+            $("#billetterTable").html("");
         })
     })
     function hentAlle(){
@@ -77,7 +87,7 @@ $(document).ready(function () {
                 "<td>"+billett.telefonnr+"</td>" +
                 "<td>"+billett.email+"</td>" +
                 "<td><button class='endreBillett' class='btn btn-primary btn-xs'>Endre</button>" +
-                "<button class='slettBillett' class='btn btn-danger btn-xs'>Slett</button></td></tr><";
+                "<button class='slettBillett' class='btn btn-danger btn-xs'>Slett</button></td></tr>";
         }
         ut += "</table>"
         $("#billetterTable").html(ut);
@@ -89,11 +99,21 @@ $(document).ready(function () {
         let $row = $(this).closest("tr"),
             $tds = $row.find('td');
         //let data = row.find("tr");
-
+        const ar = ['film', 'antall', 'fornavn', 'etternavn', 'telefonnr', 'email'];
+        const json = {};
+        const ar2 = [];
+        let counter = 0;
         $.each($tds, function (){
-            console.log($(this).text());
+            console.log($(this).innerHTML.val());
+            ar2.push($(this).innerHTML.val());
+            //json[ar[counter]] = $((this).text);
+            counter++;
         })
-
+        console.log(ar2.toString());
+        console.log(json.toString());
+        $.get("/slettEn", json, function (){
+            hentAlle();
+        })
     })
 
     $("#billetterTable").on('click', 'endreBillett', function () {
@@ -114,9 +134,7 @@ $(document).ready(function () {
 
     })
 */
-    $("#")
-    function slettEn(){
-    }
+
 //function to validate a film has been selected
     function validateFilm(target) {
         if(target === ''){
