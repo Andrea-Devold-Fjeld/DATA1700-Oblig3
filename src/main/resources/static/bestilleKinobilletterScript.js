@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("#alleBilletter").hide();
     $('form button').on("click",function(e){
         e.preventDefault();
     });
@@ -37,6 +38,7 @@ $(document).ready(function () {
         }
 
         $.post("/lagre", billett, function (){
+            $("#alleBilletter").show();
             hentAlle();
         });
     });
@@ -54,6 +56,7 @@ $(document).ready(function () {
     }
     function formaterBilletter(billetter){
         let counter = 0;
+
         let ut = "<table class='table table-striped' id='billetterTable'><tr>" +
             "<th scope='col'>Film</th>" +
             "<th scope='col'>Antall</th>" +
@@ -62,6 +65,8 @@ $(document).ready(function () {
             "<th scope='col'>Telefonnr</th>" +
             "<th scope='col'>Epost</th>" +
             "<th scope='col'></th></tr>";
+
+
         for (const billett of billetter){
             counter++;
             ut += "<tr>" +
@@ -75,10 +80,32 @@ $(document).ready(function () {
                 "<button class='slettBillett' class='btn btn-danger btn-xs'>Slett</button></td></tr><";
         }
         ut += "</table>"
-        $("#alleBilletter").html(ut);
+        $("#billetterTable").html(ut);
+        //$("#alleBilletter").html(ut);
 
     }
 
+    $("#billetterTable").on('click', '.slettBillett', function (){
+        let $row = $(this).closest("tr"),
+            $tds = $row.find('td');
+        //let data = row.find("tr");
+
+        $.each($tds, function (){
+            console.log($(this).text());
+        })
+
+    })
+
+    $("#billetterTable").on('click', 'endreBillett', function () {
+        let $row = $(this).closest("tr"),
+            $tds = $row.find('td');
+        //let data = row.find("tr");
+
+        $.each($tds, function (){
+            console.log($(this).text());
+        })
+    })
+/*
     $("#billetterTable").on('click', '.endreBillett', function(){
         let row = $(this).closest("tr");
         let data = row.find("td");
@@ -86,7 +113,8 @@ $(document).ready(function () {
         const Array = ['film', 'antall', 'fornavn','etternavn','telefonnr','email' ]
 
     })
-
+*/
+    $("#")
     function slettEn(){
     }
 //function to validate a film has been selected
