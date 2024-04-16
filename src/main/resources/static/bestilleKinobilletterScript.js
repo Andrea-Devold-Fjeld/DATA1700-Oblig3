@@ -96,22 +96,37 @@ $(document).ready(function () {
     }
 
     $("#billetterTable").on('click', '.slettBillett', function (){
-        let $row = $(this).closest("tr"),
-            $tds = $row.find('td');
+        let $row = $(this).closest("tr");
+            //$tds = $row.find('td');
+        const billett = {
+            'film' : $row.find("td:eq(0)").text(),
+            'antall' : $row.find("td:eq(1)").text(),
+            'fornavn' : $row.find('td:eq(2)').text(),
+            'etternavn' : $row.find('td:eq(3)').text(),
+            'telefonnr' : $row.find('td:eq(4)').text(),
+            'email' : $row.find('td:eq(5)').text()
+        };
+        console.log(billett.film);
+        console.log(billett.fornavn);
         //let data = row.find("tr");
+        /*
         const ar = ['film', 'antall', 'fornavn', 'etternavn', 'telefonnr', 'email'];
         const json = {};
         const ar2 = [];
         let counter = 0;
         $.each($tds, function (){
-            console.log($(this).innerHTML.val());
-            ar2.push($(this).innerHTML.val());
+            ar2.push($(this).innerText);
+            //console.log($(this).innerHTML.val());
+            //ar2.push($(this).innerHTML.val());
             //json[ar[counter]] = $((this).text);
             counter++;
         })
+        ar2.forEach(function (){console.log(this)})
         console.log(ar2.toString());
         console.log(json.toString());
-        $.get("/slettEn", json, function (){
+
+         */
+        $.get("/slettEn", billett, function (){
             hentAlle();
         })
     })
