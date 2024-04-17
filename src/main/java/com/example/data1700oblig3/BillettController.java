@@ -36,8 +36,4 @@ public class BillettController {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "feil i db - prøv igjen senere");
         }
     }
-    @PostMapping("/endreBillett")
-    public void endrebillett(int id){
-
-    }
 }

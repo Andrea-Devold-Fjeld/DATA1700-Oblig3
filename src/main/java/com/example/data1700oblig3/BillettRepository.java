@@ -27,22 +27,11 @@ public class BillettRepository {
             return false;
         }
     }
-/*
-    public void endreBillett(Billett b) throws IOException {
-        String sql = "update Billet set film=?, antall=?, fornavn=?, etternavn=?, telefonnr=?, email=?";
-        try{
-            db.update(sql, b.getFilm(), b.getAntall(), b.getFornavn(), b.getEtternavn(), b.getTelefonnr(), b.getEmail());
-        }catch (Exception e){
-            //logger
-        }
-    }
 
- */
     public boolean slettEn(Billett billett){
         String sql =  "delete from Billett where fornavn=? and etternavn=? and telefonnr=? and email=?";
         try {
             db.update(sql, billett.getFornavn(), billett.getEtternavn(), billett.getTelefonnr(), billett.getEmail());
-            //db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
             return true;
         }
         catch (Exception e){
