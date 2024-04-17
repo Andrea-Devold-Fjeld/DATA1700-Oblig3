@@ -16,7 +16,7 @@ import java.util.List;
 public class BillettRepository {
     @Autowired
     private JdbcTemplate db;
-
+    private final Logger logger = LoggerFactory.getLogger(BillettRepository.class);
     public boolean lagreBillett(Billett billett){
         String sql = "insert into Billett (film,antall,fornavn,etternavn,telefonnr,email) values(?,?,?,?,?,?)";
         try {
@@ -45,13 +45,28 @@ public class BillettRepository {
     }
 
 
-public boolean slettAlle(){
+    public boolean slettAlle(){
         String sql = "delete from Billett";
         try{
             db.update(sql);
             return true;
         }
         catch (Exception e){
+            return false;
+        }
+    }
+    public boolean update(Billett oldBillett, Billett newBillett){
+        String sql = "select id from Billett where film=? and antall=? and fornavn=? and etternavn=? and telefonnr=? and email=?";
+        try{
+            List<Billett> oldDbBillett = db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
+            String sql2 = "update Billett SET film=?, antall=?, fornavn=?, etternavn=?, telfonnr=?, email=? where id=?";
+            db.update(sql2, newBillett.getFilm(), newBillett.getAntall(), newBillett.getFornavn(), newBillett.getEtternavn(),
+                    newBillett.getTelefonnr(), newBillett.getEmail(), oldDbBillett.get(0));
+            logger.info("Id: " +oldDbBillett.get(0));
+            return true;
+        }
+        catch (Exception e){
+            //logger
             return false;
         }
     }

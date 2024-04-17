@@ -225,6 +225,10 @@ $(document).ready(function () {
             'telefonnr' : $row.find("td:eq(4)").text(),
             'email' : $row.find("td:eq(5)").text()
         }
+        console.log(JSON.stringify(updateBillett));
+        $.post("/update", oldBillett, updateBillett, function () {
+            hentAlle();
+        })
     })
 //function to validate a film has been selected
     function validateFilm(target) {
