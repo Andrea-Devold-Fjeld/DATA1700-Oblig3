@@ -226,7 +226,7 @@ $(document).ready(function () {
             'email' : $row.find("td:eq(5)").text()
         }
         console.log(JSON.stringify(updateBillett));
-        $.post("/update", oldBillett, updateBillett, function () {
+        $.post("/updateBillett", oldBillett, updateBillett, function () {
             hentAlle();
         })
     })
