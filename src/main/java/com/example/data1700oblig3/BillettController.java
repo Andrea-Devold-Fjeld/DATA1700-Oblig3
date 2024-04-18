@@ -37,8 +37,8 @@ public class BillettController {
         }
     }
     @PostMapping("/updateBillett")
-    public void updateBillett(Billett oldBillett, Billett newBillett, HttpServletResponse response) throws IOException{
-        if(!rep.updateBillett(oldBillett, newBillett)){
+    public void updateBillett(Billett billett, HttpServletResponse response) throws IOException{
+        if(!rep.updateBillett(billett)){
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "feil i db - prøv igjen senere");
         }
     }

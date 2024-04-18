@@ -83,7 +83,8 @@ $(document).ready(function () {
             return;
         }
         //Make the header
-        let ut = "<table class='table table-striped' id='billetterTable'><tr>" +
+        let ut = "<table class='table table-striped' id='billetterTable'><tr>"+
+            "<th hidden='hidden'>Id</th>" +
             "<th scope='col'>Film</th>" +
             "<th scope='col'>Antall</th>" +
             "<th scope='col'>Fornavn</th>" +
@@ -94,6 +95,7 @@ $(document).ready(function () {
         //Go through each ticket and create the row
         for (const billett of billetter){
             ut += "<tr>" +
+                "<td hidden='hidden'>"+billett.id+"</td>"+
                 "<td>"+billett.film+"</td>" +
                 "<td>"+billett.antall+"</td>" +
                 "<td>"+billett.fornavn+"</td>" +
@@ -115,6 +117,7 @@ $(document).ready(function () {
         //Make a json object since i dont display or get the auto incremented value from the db.
         //a fault with this is that if there are multiple ticket with exactly the same values
         //they will all get deleted have to see if i find a fix to this.
+        /*
         const billett = {
             'film' : $row.find("td:eq(0)").text(),
             'antall' : $row.find("td:eq(1)").text(),
@@ -123,6 +126,8 @@ $(document).ready(function () {
             'telefonnr' : $row.find('td:eq(4)').text(),
             'email' : $row.find('td:eq(5)').text()
         };
+
+         */
         //Calling the endpoint /slettEn to delete this ticket
         $.get("/slettEn", billett, function (){
             hentAlle();
@@ -137,8 +142,8 @@ $(document).ready(function () {
         let error =false;
         const updateBillett = {};
         //First check if something is put in the input-field
-        if($('#velgFilm') === ''){
-            updateBillett['film'] = $row.find("td:eq(0)").text();
+        if($('#velgFilm').prop('selectedIndex')===0){
+            updateBillett['film'] = $row.find("td:eq(1)").text();
         }
         else{
             updateBillett['film'] = $('#velgFilm').val();
@@ -146,7 +151,7 @@ $(document).ready(function () {
         }
         let antall = $('#antall').val();
         if(antall === ''){
-            updateBillett['antall'] = $row.find("td:eq(1)").text();
+            updateBillett['antall'] = $row.find("td:eq(2)").text();
         }
         else {
             if(validateAntall()){
@@ -159,7 +164,7 @@ $(document).ready(function () {
         }
         let fornavn = $('#fornavn').val();
         if(fornavn === ''){
-            updateBillett['fornavn'] = $row.find("td:eq(2)").text();
+            updateBillett['fornavn'] = $row.find("td:eq(3)").text();
         }
         else {
             if(validateFornavn(fornavn)){
@@ -172,7 +177,7 @@ $(document).ready(function () {
         }
         let etternavn = $('#etternavn').val();
         if(etternavn === ''){
-            updateBillett['etternavn'] = $row.find("td:eq(3)").text();
+            updateBillett['etternavn'] = $row.find("td:eq(4)").text();
         }
         else {
             if(validateEtternavn(etternavn)){
@@ -185,7 +190,7 @@ $(document).ready(function () {
         }
         let telefonnr = $('#telefonnr').val();
         if(telefonnr === ''){
-            updateBillett['telefonnr']=$row.find("td:eq(4)").text();
+            updateBillett['telefonnr']=$row.find("td:eq(5)").text();
         }
         else{
             if(validateTelefonnr(telefonnr)){
@@ -198,7 +203,7 @@ $(document).ready(function () {
         }
         let email = $('#epost').val();
         if(email === ''){
-            updateBillett['email']=$row.find("td:eq(5)").text();
+            updateBillett['email']=$row.find("td:eq(6)").text();
         }
         else {
             if(validateEpost(email)){
@@ -216,17 +221,9 @@ $(document).ready(function () {
             alert('To update a ticket you have to write something in atleast one input field!');
             return;
         }
-        //get the old ticket
-        const oldBillett = {
-            'film' : $row.find("td:eq(0)").text(),
-            'antall' : $row.find("td:eq(1)").text(),
-            'fornavn' : $row.find("td:eq(2)").text(),
-            'etternavn' : $row.find("td:eq(3)").text(),
-            'telefonnr' : $row.find("td:eq(4)").text(),
-            'email' : $row.find("td:eq(5)").text()
-        }
+        updateBillett["id"] = $row.find("td:eq(0)").text();
         console.log(JSON.stringify(updateBillett));
-        $.post("/updateBillett", oldBillett, updateBillett, function () {
+        $.post("/updateBillett", updateBillett, function () {
             hentAlle();
         })
     })

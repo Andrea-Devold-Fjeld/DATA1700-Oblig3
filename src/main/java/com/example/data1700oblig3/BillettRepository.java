@@ -55,17 +55,13 @@ public class BillettRepository {
             return false;
         }
     }
-    public boolean updateBillett(Billett oldBillett, Billett newBillett){
-        String sql = "select * from Billett where film=? and antall=? and fornavn=? and etternavn=? and telefonnr=? and email=?";
-        logger.info("Inne i update");
+    public boolean updateBillett(Billett b){
+        String sql = "update Billett set film=?, antall=?, fornavn=? where id=?;";
+        String sql2 = "update Billett set etternavn=?, telefonnr=?, email=? where id=?;";
 
         try{
-            List<Billett> oldDbBillett = db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
-            logger.debug("Old billett: %s".formatted(oldDbBillett.get(0).toString()));
-            String sql2 = "update Billett SET film=?, antall=?, fornavn=?, etternavn=?, telfonnr=?, email=? where id=?";
-            db.update(sql2, newBillett.getFilm(), newBillett.getAntall(), newBillett.getFornavn(), newBillett.getEtternavn(),
-                    newBillett.getTelefonnr(), newBillett.getEmail(), oldDbBillett.get(0).getId());
-            logger.info("Id: " +oldDbBillett.get(0));
+            db.update(sql, b.getFilm(), b.getAntall(), b.getFornavn(), b.getId());
+            db.update(sql2, b.getEtternavn(), b.getTelefonnr(), b.getEmail(), b.getId());
             return true;
         }
         catch (Exception e){
