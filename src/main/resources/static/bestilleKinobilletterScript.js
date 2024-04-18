@@ -12,6 +12,26 @@ $(document).ready(function () {
             telefonnr : $("#telefonnr").val(),
             email : $("#epost").val()
         };
+        if(validateInput(billett)){
+            return;
+        }
+        /*
+        Endpoint to save the ticket to the db
+         */
+        $.post("/lagre", billett, function (){
+            $("#alleBilletter").show();
+            //call hentAlle() to retreive all the tickets and display them
+            hentAlle();
+        })
+        .fail(function (jqXHR) {
+            const json = $.parseJSON(jqXHR.responseText);
+            $("#feil").html(json.message);
+        })
+        //Reset the input fields
+        resetInputField();
+    });
+
+    function validateInput(billett){
         let error = false;
         //input valiadation:
 
@@ -33,24 +53,8 @@ $(document).ready(function () {
         if(validateEpost(billett['email'])){
             error = true;
         }
-        if(error){
-            return;
-        }
-        /*
-        Endpoint to save the ticket to the db
-         */
-        $.post("/lagre", billett, function (){
-            $("#alleBilletter").show();
-            //call hentAlle() to retreive all the tickets and display them
-            hentAlle();
-        });
-        //Reset the input fields
-        resetInputField();
-        /*
-
-
-         */
-    });
+        return error;
+    }
     /*
     Endpoint to delete all tickets in the db.
      */
@@ -59,7 +63,12 @@ $(document).ready(function () {
             //Remove the table
             $("#billetterTable").html("");
         })
+        .fail(function (jqXHR) {
+            const json = $.parseJSON(jqXHR.responseText);
+            $("#feil").html(json.message);
+        });
     })
+
     /*
     Endpoint to retreive all the tickets from the db
      */
@@ -67,6 +76,10 @@ $(document).ready(function () {
         $.get("/hentAlle", function (billetter) {
             //Function to format the tickets and write them to the table
             formaterBilletter(billetter);
+        })
+        .fail(function (jqXHR) {
+            const json = $.parseJSON(jqXHR.responseText);
+            $("#feil").html(json.message);
         });
     }
     /*
@@ -110,13 +123,15 @@ $(document).ready(function () {
     $("#billetterTable").on('click', '.slettBillett', function (){
         //Find the closest row to the button pressed
         let $row = $(this).closest("tr");
-        let id = $row.find("td:eq(0)").text();
-        console.log("id: "+id);
-        id = {'id' : id}
+        id = {"id" : $row.find("td:eq(0)").text()}
         //Calling the endpoint /slettEn to delete this ticket
         $.get("/slettEn", id, function (){
             hentAlle();
         })
+        .fail(function (jqXHR) {
+            const json = $.parseJSON(jqXHR.responseText);
+            $("#feil").html(json.message);
+        });
     })
     /*
     Function to update a current ticket
@@ -212,6 +227,10 @@ $(document).ready(function () {
         $.post("/updateBillett", updateBillett, function () {
             hentAlle();
             resetInputField();
+        })
+        .fail(function (jqXHR) {
+            const json = $.parseJSON(jqXHR.responseText);
+            $("#feil").html(json.message);
         })
     })
 //function to validate a film has been selected
