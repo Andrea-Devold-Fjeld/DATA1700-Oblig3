@@ -1,15 +1,12 @@
 package com.example.data1700oblig3;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
 import java.util.List;
 
 @Repository
@@ -28,10 +25,11 @@ public class BillettRepository {
         }
     }
 
-    public boolean slettEn(Billett billett){
-        String sql =  "delete from Billett where fornavn=? and etternavn=? and telefonnr=? and email=?";
+    public boolean slettEn(Billett b){
+        //logger.info("Id: " +id.toString());
+        String sql =  "delete from Billett where id=?";
         try {
-            db.update(sql, billett.getFornavn(), billett.getEtternavn(), billett.getTelefonnr(), billett.getEmail());
+            db.update(sql, b.getId());
             return true;
         }
         catch (Exception e){

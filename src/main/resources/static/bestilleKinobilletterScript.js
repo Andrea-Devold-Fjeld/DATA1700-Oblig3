@@ -45,13 +45,9 @@ $(document).ready(function () {
             hentAlle();
         });
         //Reset the input fields
+        resetInputField();
         /*
-        $("#velgFilm").prop('selectedIndex', 0);
-        $("#antall").val("");
-        $("#fornavn").val("");
-        $("#etternavn").val("");
-        $("#telefonnr").val("");
-        $("#epost").val("");
+
 
          */
     });
@@ -114,28 +110,19 @@ $(document).ready(function () {
     $("#billetterTable").on('click', '.slettBillett', function (){
         //Find the closest row to the button pressed
         let $row = $(this).closest("tr");
-        //Make a json object since i dont display or get the auto incremented value from the db.
-        //a fault with this is that if there are multiple ticket with exactly the same values
-        //they will all get deleted have to see if i find a fix to this.
-        /*
-        const billett = {
-            'film' : $row.find("td:eq(0)").text(),
-            'antall' : $row.find("td:eq(1)").text(),
-            'fornavn' : $row.find('td:eq(2)').text(),
-            'etternavn' : $row.find('td:eq(3)').text(),
-            'telefonnr' : $row.find('td:eq(4)').text(),
-            'email' : $row.find('td:eq(5)').text()
-        };
-
-         */
+        let id = $row.find("td:eq(0)").text();
+        console.log("id: "+id);
+        id = {'id' : id}
         //Calling the endpoint /slettEn to delete this ticket
-        $.get("/slettEn", billett, function (){
+        $.get("/slettEn", id, function (){
             hentAlle();
         })
     })
     /*
     Function to update a current ticket
      */
+    //HAve to fix antall that shows error message!!
+    //HAVE TO CLEAN UP THE CODE
     $("#billetterTable").on('click', '.updateBillett', function () {
         let $row = $(this).closest("tr");
         let change = false;
@@ -154,7 +141,7 @@ $(document).ready(function () {
             updateBillett['antall'] = $row.find("td:eq(2)").text();
         }
         else {
-            if(validateAntall()){
+            if(validateAntall(antall)){
                 error = true;
             }
             else {
@@ -222,9 +209,9 @@ $(document).ready(function () {
             return;
         }
         updateBillett["id"] = $row.find("td:eq(0)").text();
-        console.log(JSON.stringify(updateBillett));
         $.post("/updateBillett", updateBillett, function () {
             hentAlle();
+            resetInputField();
         })
     })
 //function to validate a film has been selected
@@ -285,5 +272,13 @@ $(document).ready(function () {
             return true;
         }
         return false;
+    }
+    function resetInputField(){
+        $("#velgFilm").prop('selectedIndex', 0);
+        $("#antall").val("");
+        $("#fornavn").val("");
+        $("#etternavn").val("");
+        $("#telefonnr").val("");
+        $("#epost").val("");
     }
 })

@@ -1,7 +1,7 @@
 package com.example.data1700oblig3;
 
 public class Billett {
-    private int id;
+    private Integer id;
     private String film;
     private int antall;
     private String fornavn;
@@ -79,11 +79,11 @@ public class Billett {
         this.email = email;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }
