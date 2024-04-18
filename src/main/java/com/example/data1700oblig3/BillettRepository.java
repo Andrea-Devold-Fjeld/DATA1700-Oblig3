@@ -20,26 +20,31 @@ public class BillettRepository {
             db.update(sql, billett.getFilm(),billett.getAntall(), billett.getFornavn(),billett.getEtternavn(),billett.getTelefonnr(),billett.getEmail());
             return true;
         } catch (Exception e) {
-            //have to make the logger work
+            logger.error(String.valueOf(e));
             return false;
         }
     }
 
     public boolean slettEn(Billett b){
-        //logger.info("Id: " +id.toString());
         String sql =  "delete from Billett where id=?";
         try {
             db.update(sql, b.getId());
             return true;
         }
         catch (Exception e){
-            //
+            logger.error(String.valueOf(e));
             return false;
         }
     }
     public List<Billett> hentBilletter() {
         String sql = "select * from Billett order by etternavn";
-        return db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
+        try {
+            return db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
+        }
+        catch (Exception e){
+            logger.error(String.valueOf(e));
+            return null;
+        }
     }
 
 
@@ -50,6 +55,7 @@ public class BillettRepository {
             return true;
         }
         catch (Exception e){
+            logger.error(String.valueOf(e));
             return false;
         }
     }
@@ -63,7 +69,7 @@ public class BillettRepository {
             return true;
         }
         catch (Exception e){
-            //logger
+            logger.error(String.valueOf(e));
             return false;
         }
     }

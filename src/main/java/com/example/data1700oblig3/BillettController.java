@@ -21,7 +21,10 @@ public class BillettController {
         }
     }
     @GetMapping("/hentAlle")
-    public List<Billett> hentAlleBilletter(){
+    public List<Billett> hentAlleBilletter(HttpServletResponse response) throws IOException{
+        if(rep.hentBilletter() == null){
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i db - prøv igjen senere");
+        }
         return rep.hentBilletter();
     }
     @GetMapping("/slettAlle")
