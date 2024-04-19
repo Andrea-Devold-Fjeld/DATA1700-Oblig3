@@ -159,126 +159,108 @@ $(document).ready(function () {
     $("#billetterTable").on('click', '.updateBillett', function () {
         resetErrorMessage();
         let $row = $(this).closest("tr");
+        //variable to check if something is put in the input fields
         let change = false;
+        //variable to check if input validation failed
         let error =false;
-        const updateBillett = {};
-        //First check if nothing is changed in the input field
-        if($('#velgFilm').prop('selectedIndex')===0){
-            //Then use the old value from the table
-            updateBillett['film'] = $row.find("td:eq(1)").text();
-        }
-        //If something is in the input field
-        else{
-            //Use the new value and change the boolean change to true
-            updateBillett['film'] = $('#velgFilm').val();
+        //JSON object to save the new input
+        const billett = {};
+        //First check if a movie is selected
+        if($('#velgFilm').prop('selectedIndex')!==0){
+            //Save the input and change the change variable
+            billett['film'] = $('#velgFilm').val();
             change = true;
         }
 
         let antall = $('#antall').val();
-        //Check if the input field is empty
-        if(antall === ''){
-            //if empy use the old value
-            updateBillett['antall'] = $row.find("td:eq(2)").text();
-        }
-        //If something is in the input field
-        else {
-            //check if the input is valid
+        //Check if there is something in the input field
+        if(antall !== ''){
+            //Check the input with inputvalidation
             if(validateAntall(antall)){
                 //failed input validation
                 error = true;
             }
-            //Use the new value
+            //Save the new value
             else {
-                updateBillett['antall'] = antall;
+                billett['antall'] = antall;
                 change = true;
             }
         }
+
         let fornavn = $('#fornavn').val();
-        //check if input-field is empty
-        if(fornavn === ''){
-            //if it is use the old value
-            updateBillett['fornavn'] = $row.find("td:eq(3)").text();
-        }
-        //Something is in the input-field
-        else {
-            //check with input validation
+        //check if input-field is not empty
+        if(fornavn !== ''){
+            //check the new value with input validation
             if(validateFornavn(fornavn)){
                 //input validation failed
                 error = true;
             }
-            //Input-validation succesfull use the new value
+            //Input-validation succesfull save the new value
             else {
-                updateBillett['fornavn'] = fornavn;
+                billett['fornavn'] = fornavn;
                 change = true;
             }
         }
+
+
         let etternavn = $('#etternavn').val();
-        //check if input-field is empty
-        if(etternavn === ''){
-            updateBillett['etternavn'] = $row.find("td:eq(4)").text();
-        }
-        //Something is in the input-field
-        else {
-            //check with input validation
+        //check if input-field is not empty
+        if(etternavn !== ''){
+            //VAlidate the input
             if(validateEtternavn(etternavn)){
                 //input validation failed
                 error = true;
             }
-            //Input-validation succesfull use the new value
+            //Input-validation succesfull save the new value
             else {
-                updateBillett['etternavn']=etternavn;
+                billett['etternavn']=etternavn;
                 change = true;
             }
         }
+
         let telefonnr = $('#telefonnr').val();
-        //check if input-field is empty
-        if(telefonnr === ''){
-            updateBillett['telefonnr']=$row.find("td:eq(5)").text();
-        }
-        //Something is in the input-field
-        else{
-            //check with input validation
+        //check if input-field is not empty
+        if(telefonnr !== ''){
+            //Check the input with inputvalidation
             if(validateTelefonnr(telefonnr)){
                 //input validation failed
                 error = true;
             }
-            //Input-validation succesfull use the new value
+            //Input-validation succesfull save the new value
             else {
-                updateBillett['telefonnr']=telefonnr;
+                billett['telefonnr']=telefonnr;
                 change = true;
             }
         }
         let email = $('#epost').val();
-        //check if input-field is empty
-        if(email === ''){
-            updateBillett['email']=$row.find("td:eq(6)").text();
-        }
-        //Something is in the input-field
-        else {
-            //check with input validation
+        //check if input-field is not empty
+        if(email !== ''){
+            //Check the input with input validation
             if(validateEpost(email)){
                 //input validation failed
                 error = true;
             }
-            //Input-validation succesfull use the new value
+            //Input-validation succesfull save the new value
             else {
-                updateBillett['email']=email;
+                billett['email']=email;
                 change = true;
             }
         }
+        //if one of the input validation failed return now
         if(error){
             return;
         }
+        //If nothing is in the input fields give an alert and return
         if(!change){
             alert('To update a ticket you have to write something in atleast one input field!');
             return;
         }
         //add the id to the JSON object
-        updateBillett["id"] = $row.find("td:eq(0)").text();
+        billett["id"] = $row.find("td:eq(0)").text();
         /*
         Endpoint to update the ticket
          */
-        $.post("/updateBillett", updateBillett, function () {
+        $.put("/updateBillett", billett, function () {
             //Update the table
             hentAlle();
             //reset the error messages and input fields

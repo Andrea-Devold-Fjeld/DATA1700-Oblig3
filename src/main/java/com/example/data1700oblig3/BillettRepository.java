@@ -60,6 +60,58 @@ public class BillettRepository {
         }
     }
     public boolean updateBillett(Billett b){
+        if(b.getFilm() != null){
+            try{
+                String sql = "update Billett set film=? where id=?;";
+                db.update(sql, b.getFilm(),b.getId());
+            }
+            catch (Exception e){
+                logger.error(String.valueOf(e));
+                return false;
+            }
+        } if (b.getAntall() != null) {
+            try{
+                String sql = "update Billett set antall=? where id=?;";
+                db.update(sql, b.getAntall(), b.getId());
+            }catch (Exception e){
+                logger.error(String.valueOf(e));
+                return false;
+            }
+        } if (b.getFornavn() != null) {
+            try {
+                String sql = "update Billett set fornavn=? where id=?;";
+                db.update(sql,b.getFornavn(), b.getId());
+            }catch (Exception e){
+                logger.error(String.valueOf(e));
+                return false;
+            }
+        } if (b.getEtternavn() != null) {
+            try {
+                String sql = "update Billett set etternavn=? where id=?;";
+                db.update(sql, b.getEtternavn(),b.getId());
+            }catch (Exception e){
+                logger.error(String.valueOf(e));
+                return false;
+            }
+        } if (b.getTelefonnr() != null) {
+            try {
+                String sql ="update Billett set telefonnr=? where id=?;";
+                db.update(sql, b.getTelefonnr(), b.getId());
+            }catch (Exception e){
+                logger.error(String.valueOf(e));
+                return false;
+            }
+        } if (b.getEmail() != null) {
+            try {
+                String sql = "update Billett set email=? where id=?;";
+                db.update(sql, b.getEmail(), b.getId());
+            } catch (Exception e) {
+                logger.error(String.valueOf(e));
+                return false;
+            }
+        }
+        return true;
+        /*
         String sql = "update Billett set film=?, antall=?, fornavn=? where id=?;";
         String sql2 = "update Billett set etternavn=?, telefonnr=?, email=? where id=?;";
 
@@ -72,5 +124,7 @@ public class BillettRepository {
             logger.error(String.valueOf(e));
             return false;
         }
+
+         */
     }
 }

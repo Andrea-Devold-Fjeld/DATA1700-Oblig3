@@ -3,7 +3,7 @@ package com.example.data1700oblig3;
 public class Billett {
     private Integer id;
     private String film;
-    private int antall;
+    private Integer antall;
     private String fornavn;
     private String etternavn;
     private String telefonnr;
@@ -39,7 +39,7 @@ public class Billett {
         this.film = film;
     }
 
-    public int getAntall() {
+    public Integer getAntall() {
         return antall;
     }
 
