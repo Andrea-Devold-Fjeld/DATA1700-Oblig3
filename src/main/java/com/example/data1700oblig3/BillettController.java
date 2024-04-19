@@ -40,7 +40,7 @@ public class BillettController {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "feil i db - prøv igjen senere");
         }
     }
-    @PutMapping ("/updateBillett")
+    @PostMapping ("/updateBillett")
     public void updateBillett(Billett billett, HttpServletResponse response) throws IOException{
         if(!rep.updateBillett(billett)){
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "feil i db - prøv igjen senere");

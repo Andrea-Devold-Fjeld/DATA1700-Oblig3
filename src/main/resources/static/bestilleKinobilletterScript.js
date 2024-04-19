@@ -260,7 +260,7 @@ $(document).ready(function () {
         /*
         Endpoint to update the ticket
          */
-        $.put("/updateBillett", billett, function () {
+        $.post("/updateBillett", billett, function () {
             //Update the table
             hentAlle();
             //reset the error messages and input fields

@@ -128,3 +128,141 @@ insert into Billett (film,antall,fornavn,etternavn,telefonnr,email) values(?,?,?
 2024-04-19T10:45:23.703+02:00  INFO 15300 --- [DATA1700-Oblig3] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-04-19T10:45:23.704+02:00  INFO 15300 --- [DATA1700-Oblig3] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-04-19T10:45:23.705+02:00  INFO 15300 --- [DATA1700-Oblig3] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-19T11:40:04.840+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 19252 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:40:04.845+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:40:04.913+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-19T11:40:04.913+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-19T11:40:06.283+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:40:06.301+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:40:06.302+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:40:06.354+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:40:06.355+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1441 ms
+2024-04-19T11:40:06.389+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-19T11:40:06.650+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:22abc3f3-dc83-47d2-a361-03af97b580ec user=SA
+2024-04-19T11:40:06.653+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-19T11:40:06.666+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:22abc3f3-dc83-47d2-a361-03af97b580ec'
+2024-04-19T11:40:06.896+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:40:07.258+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:40:07.302+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:40:07.312+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 3.192 seconds (process running for 4.302)
+2024-04-19T11:40:22.921+02:00  INFO 19252 --- [DATA1700-Oblig3] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-19T11:40:22.946+02:00  WARN 19252 --- [DATA1700-Oblig3] [Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-04-19T11:40:22.948+02:00  INFO 19252 --- [DATA1700-Oblig3] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-19T11:40:22.951+02:00  INFO 19252 --- [DATA1700-Oblig3] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-19T11:40:23.046+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 19252 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:40:23.046+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:40:23.545+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:40:23.546+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:40:23.547+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:40:23.565+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:40:23.565+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 516 ms
+2024-04-19T11:40:23.584+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-04-19T11:40:23.587+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:c419e4a8-c266-471c-8faa-81ce62339c79 user=SA
+2024-04-19T11:40:23.588+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-04-19T11:40:23.589+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:c419e4a8-c266-471c-8faa-81ce62339c79'
+2024-04-19T11:40:23.659+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:40:23.813+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:40:23.835+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:40:23.843+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 0.828 seconds (process running for 20.833)
+2024-04-19T11:40:23.851+02:00  INFO 19252 --- [DATA1700-Oblig3] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-19T11:41:15.948+02:00  INFO 19252 --- [DATA1700-Oblig3] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19T11:41:15.949+02:00  INFO 19252 --- [DATA1700-Oblig3] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-19T11:41:15.950+02:00  INFO 19252 --- [DATA1700-Oblig3] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-19T11:44:37.314+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 24672 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:44:37.318+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:44:37.405+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-19T11:44:37.405+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-19T11:44:38.969+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:44:38.995+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:44:38.996+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:44:39.068+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:44:39.068+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1658 ms
+2024-04-19T11:44:39.102+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-19T11:44:39.409+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:35db5678-e92a-4b79-ac96-f5cc8b965ba6 user=SA
+2024-04-19T11:44:39.412+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-19T11:44:39.424+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:35db5678-e92a-4b79-ac96-f5cc8b965ba6'
+2024-04-19T11:44:39.651+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:44:39.981+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:44:40.022+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:44:40.033+02:00  INFO 24672 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 3.288 seconds (process running for 4.28)
+2024-04-19T11:44:56.046+02:00  INFO 24672 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19T11:44:56.048+02:00  INFO 24672 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-19T11:44:56.049+02:00  INFO 24672 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-19T11:47:21.680+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 22244 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:47:21.683+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:47:21.752+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-19T11:47:21.752+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-19T11:47:22.901+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:47:22.917+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:47:22.917+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:47:22.965+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:47:22.966+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1213 ms
+2024-04-19T11:47:22.998+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-19T11:47:23.236+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:d61ab974-f85c-4ce0-a8c5-49debca3ccf5 user=SA
+2024-04-19T11:47:23.238+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-19T11:47:23.249+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:d61ab974-f85c-4ce0-a8c5-49debca3ccf5'
+2024-04-19T11:47:23.433+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:47:23.715+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:47:23.751+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:47:23.760+02:00  INFO 22244 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 2.745 seconds (process running for 3.685)
+2024-04-19T11:49:29.799+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 4600 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:49:29.803+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:49:29.890+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-19T11:49:29.891+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-19T11:49:31.465+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:49:31.484+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:49:31.485+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:49:31.545+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:49:31.546+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1654 ms
+2024-04-19T11:49:31.576+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-19T11:49:31.859+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:c1bf19ef-dc94-40bb-b806-86b243152651 user=SA
+2024-04-19T11:49:31.861+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-19T11:49:31.874+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:c1bf19ef-dc94-40bb-b806-86b243152651'
+2024-04-19T11:49:32.090+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:49:32.441+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:49:32.485+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:49:32.497+02:00  INFO 4600 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 3.505 seconds (process running for 4.51)
+2024-04-19T11:49:39.296+02:00  INFO 4600 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19T11:49:39.296+02:00  INFO 4600 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-19T11:49:39.298+02:00  INFO 4600 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-19T11:50:03.006+02:00  WARN 4600 --- [DATA1700-Oblig3] [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-04-19T11:50:40.350+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 15968 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:50:40.353+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:50:40.415+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-19T11:50:40.416+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-19T11:50:41.776+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:50:41.793+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:50:41.793+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:50:41.852+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:50:41.853+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1436 ms
+2024-04-19T11:50:41.886+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-19T11:50:42.141+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:855baa1a-23be-4787-ad3e-2ace44a257e7 user=SA
+2024-04-19T11:50:42.144+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-19T11:50:42.157+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:855baa1a-23be-4787-ad3e-2ace44a257e7'
+2024-04-19T11:50:42.408+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:50:42.791+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:50:42.837+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:50:42.848+02:00  INFO 15968 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 3.133 seconds (process running for 4.105)
+2024-04-19T11:50:49.377+02:00  INFO 15968 --- [DATA1700-Oblig3] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19T11:50:49.377+02:00  INFO 15968 --- [DATA1700-Oblig3] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-19T11:50:49.379+02:00  INFO 15968 --- [DATA1700-Oblig3] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-04-19T11:56:02.507+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Starting Data1700Oblig3Application using Java 17.0.7 with PID 13372 (C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3\target\classes started by andre in C:\Users\andre\OneDrive\Documents\DATA1700\Oblig3\Oblig3_2\DATA1700-Oblig3)
+2024-04-19T11:56:02.512+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : No active profile set, falling back to 1 default profile: "default"
+2024-04-19T11:56:02.598+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-19T11:56:02.599+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-19T11:56:04.388+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-19T11:56:04.411+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-19T11:56:04.411+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-19T11:56:04.468+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-19T11:56:04.469+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1868 ms
+2024-04-19T11:56:04.545+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-19T11:56:05.043+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:11aaf8e0-ebe5-4d61-9985-6e1aacfc0f8b user=SA
+2024-04-19T11:56:05.046+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-19T11:56:05.063+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:11aaf8e0-ebe5-4d61-9985-6e1aacfc0f8b'
+2024-04-19T11:56:05.396+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-19T11:56:05.793+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-19T11:56:05.838+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-19T11:56:05.850+02:00  INFO 13372 --- [DATA1700-Oblig3] [restartedMain] c.e.d.Data1700Oblig3Application          : Started Data1700Oblig3Application in 4.034 seconds (process running for 5.102)
+2024-04-19T11:57:01.776+02:00  INFO 13372 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19T11:57:01.777+02:00  INFO 13372 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-19T11:57:01.778+02:00  INFO 13372 --- [DATA1700-Oblig3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
