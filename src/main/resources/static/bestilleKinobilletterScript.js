@@ -1,9 +1,16 @@
 $(document).ready(function () {
     $("#alleBilletter").hide();
     $('form button').on("click",function(e){
+        //I do this to prevent the default submit button, to make my own logic
         e.preventDefault();
     });
+    /*
+    Funtion when the button Kjøp Billett is pressed
+     */
     $("#kjopBillett").click(function () {
+        //reset error messages
+        resetErrorMessage();
+        //Create the json object billett
         const billett = {
             film : $("#velgFilm").val(),
             antall : $("#antall").val(),
@@ -12,6 +19,7 @@ $(document).ready(function () {
             telefonnr : $("#telefonnr").val(),
             email : $("#epost").val()
         };
+        //check if the input is correct if validateInput returns true end the function
         if(validateInput(billett)){
             return;
         }
@@ -23,14 +31,21 @@ $(document).ready(function () {
             //call hentAlle() to retreive all the tickets and display them
             hentAlle();
         })
+            //Error message if the controller returns error
         .fail(function (jqXHR) {
             const json = $.parseJSON(jqXHR.responseText);
             $("#feil").html(json.message);
         })
-        //Reset the input fields
+        //Reset the input fields and error messages
         resetInputField();
+        resetErrorMessage();
     });
-
+    /*
+    Function to validate the form inputs.
+    billett is JSON object of the inputvalues
+    return true if input-validation fails.
+    return false if input-validation does not fail.
+     */
     function validateInput(billett){
         let error = false;
         //input valiadation:
@@ -63,6 +78,7 @@ $(document).ready(function () {
             //Remove the table
             $("#billetterTable").html("");
         })
+            //Error message if the controller returns error
         .fail(function (jqXHR) {
             const json = $.parseJSON(jqXHR.responseText);
             $("#feil").html(json.message);
@@ -77,6 +93,7 @@ $(document).ready(function () {
             //Function to format the tickets and write them to the table
             formaterBilletter(billetter);
         })
+            //Error message if the controller returns error
         .fail(function (jqXHR) {
             const json = $.parseJSON(jqXHR.responseText);
             $("#feil").html(json.message);
@@ -93,7 +110,7 @@ $(document).ready(function () {
         }
         //Make the header
         let ut = "<table class='table table-striped' id='billetterTable'><tr>"+
-            "<th hidden='hidden'>Id</th>" +
+            "<th hidden='hidden'>Id</th>" + //Make a column with the id from the DB but hide it.
             "<th scope='col'>Film</th>" +
             "<th scope='col'>Antall</th>" +
             "<th scope='col'>Fornavn</th>" +
@@ -104,7 +121,7 @@ $(document).ready(function () {
         //Go through each ticket and create the row
         for (const billett of billetter){
             ut += "<tr>" +
-                "<td hidden='hidden'>"+billett.id+"</td>"+
+                "<td hidden='hidden'>"+billett.id+"</td>"+  //Hide the id but still save it so that update and delete one is easier
                 "<td>"+billett.film+"</td>" +
                 "<td>"+billett.antall+"</td>" +
                 "<td>"+billett.fornavn+"</td>" +
@@ -128,6 +145,7 @@ $(document).ready(function () {
         $.get("/slettEn", id, function (){
             hentAlle();
         })
+            //Error message if the controller returns error
         .fail(function (jqXHR) {
             const json = $.parseJSON(jqXHR.responseText);
             $("#feil").html(json.message);
@@ -139,78 +157,110 @@ $(document).ready(function () {
     //HAve to fix antall that shows error message!!
     //HAVE TO CLEAN UP THE CODE
     $("#billetterTable").on('click', '.updateBillett', function () {
+        resetErrorMessage();
         let $row = $(this).closest("tr");
         let change = false;
         let error =false;
         const updateBillett = {};
-        //First check if something is put in the input-field
+        //First check if nothing is changed in the input field
         if($('#velgFilm').prop('selectedIndex')===0){
+            //Then use the old value from the table
             updateBillett['film'] = $row.find("td:eq(1)").text();
         }
+        //If something is in the input field
         else{
+            //Use the new value and change the boolean change to true
             updateBillett['film'] = $('#velgFilm').val();
             change = true;
         }
+
         let antall = $('#antall').val();
+        //Check if the input field is empty
         if(antall === ''){
+            //if empy use the old value
             updateBillett['antall'] = $row.find("td:eq(2)").text();
         }
+        //If something is in the input field
         else {
+            //check if the input is valid
             if(validateAntall(antall)){
+                //failed input validation
                 error = true;
             }
+            //Use the new value
             else {
                 updateBillett['antall'] = antall;
                 change = true;
             }
         }
         let fornavn = $('#fornavn').val();
+        //check if input-field is empty
         if(fornavn === ''){
+            //if it is use the old value
             updateBillett['fornavn'] = $row.find("td:eq(3)").text();
         }
+        //Something is in the input-field
         else {
+            //check with input validation
             if(validateFornavn(fornavn)){
+                //input validation failed
                 error = true;
             }
+            //Input-validation succesfull use the new value
             else {
                 updateBillett['fornavn'] = fornavn;
                 change = true;
             }
         }
         let etternavn = $('#etternavn').val();
+        //check if input-field is empty
         if(etternavn === ''){
             updateBillett['etternavn'] = $row.find("td:eq(4)").text();
         }
+        //Something is in the input-field
         else {
+            //check with input validation
             if(validateEtternavn(etternavn)){
+                //input validation failed
                 error = true;
             }
+            //Input-validation succesfull use the new value
             else {
                 updateBillett['etternavn']=etternavn;
                 change = true;
             }
         }
         let telefonnr = $('#telefonnr').val();
+        //check if input-field is empty
         if(telefonnr === ''){
             updateBillett['telefonnr']=$row.find("td:eq(5)").text();
         }
+        //Something is in the input-field
         else{
+            //check with input validation
             if(validateTelefonnr(telefonnr)){
+                //input validation failed
                 error = true;
             }
+            //Input-validation succesfull use the new value
             else {
                 updateBillett['telefonnr']=telefonnr;
                 change = true;
             }
         }
         let email = $('#epost').val();
+        //check if input-field is empty
         if(email === ''){
             updateBillett['email']=$row.find("td:eq(6)").text();
         }
+        //Something is in the input-field
         else {
+            //check with input validation
             if(validateEpost(email)){
+                //input validation failed
                 error = true;
             }
+            //Input-validation succesfull use the new value
             else {
                 updateBillett['email']=email;
                 change = true;
@@ -223,11 +273,19 @@ $(document).ready(function () {
             alert('To update a ticket you have to write something in atleast one input field!');
             return;
         }
+        //add the id to the JSON object
         updateBillett["id"] = $row.find("td:eq(0)").text();
+        /*
+        Endpoint to update the ticket
+         */
         $.post("/updateBillett", updateBillett, function () {
+            //Update the table
             hentAlle();
+            //reset the error messages and input fields
             resetInputField();
-        })
+            resetErrorMessage();
+
+        })//If the endpoint failed write the error message on screen
         .fail(function (jqXHR) {
             const json = $.parseJSON(jqXHR.responseText);
             $("#feil").html(json.message);
@@ -292,6 +350,9 @@ $(document).ready(function () {
         }
         return false;
     }
+    /*
+    Function to reset the input fields
+     */
     function resetInputField(){
         $("#velgFilm").prop('selectedIndex', 0);
         $("#antall").val("");
@@ -299,5 +360,17 @@ $(document).ready(function () {
         $("#etternavn").val("");
         $("#telefonnr").val("");
         $("#epost").val("");
+    }
+    /*
+    Function to reset the error messages
+     */
+    function resetErrorMessage()    {
+        $("#filmError").html("");
+        $("#antallError").html("");
+        $("#fornavnError").html("");
+        $("#etternavnError").html("");
+        $("#telfonnrError").html("");
+        $("#epostError").html("");
+        $("#feil").html("");
     }
 })
