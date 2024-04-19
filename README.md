@@ -3,7 +3,7 @@ Solveig Andrea Devold Fjeld - sofje9342@oslomet.no
 
 github-repo: https://github.com/Capt-Obv/DATA1700-Oblig3
 
-Screen recording: https://youtu.be/3L_dfzJwjqY
+Screen recording: https://youtu.be/sFQSAnk4zjc
 ## My solution
 For this task i choose to use the h2-database, and i styled the page with bootstrap.
 I feel that the most important part of this assignement is the enpoints and that this works as it should, so i wont explain in detail the html and JS that is the same as in Oblig 2.
