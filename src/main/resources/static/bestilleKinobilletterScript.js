@@ -154,8 +154,6 @@ $(document).ready(function () {
     /*
     Function to update a current ticket
      */
-    //HAve to fix antall that shows error message!!
-    //HAVE TO CLEAN UP THE CODE
     $("#billetterTable").on('click', '.updateBillett', function () {
         resetErrorMessage();
         let $row = $(this).closest("tr");

@@ -8,7 +8,7 @@ public class Billett {
     private String etternavn;
     private String telefonnr;
     private String email;
-
+/*
     public Billett(String film, int antall, String fornavn, String etternavn, String telefonnr, String email) {
         this.film = film;
         this.antall = antall;
@@ -17,7 +17,7 @@ public class Billett {
         this.telefonnr = telefonnr;
         this.email = email;
     }
-
+*/
     public Billett() {
     }
 
